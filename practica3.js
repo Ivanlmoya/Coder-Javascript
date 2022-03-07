@@ -20,5 +20,5 @@ do{
     }
 }while(vidas > 0)
 
-alert(`Su puntaje fue de ${puntaje} , si quiere jugar nuevamente presione F5`); 
+alert(`Su puntaje fue de ${puntaje}`); 
 
