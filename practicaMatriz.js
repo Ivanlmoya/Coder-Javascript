@@ -87,7 +87,7 @@ function ordenarPorId() {
     }   
 }
 function calcularPrestamos() {
-    let personaBuscada = prompt("Ingrese el nombre de la persona");
+    let personaBuscada = prompt("Ingrese el nombre de la persona").toLocaleLowerCase();
     let buscador = arrayPrestamos.map(nombre => nombre.nombre)
     let index = buscador.indexOf(personaBuscada) 
     let interesCuota = () => (arrayPrestamos[index].monto / arrayPrestamos[index].cantCuotas) * (arrayPrestamos[index].interes / 100 + 1);
