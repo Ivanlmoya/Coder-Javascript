@@ -1,24 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrega 1</title>
 </head>
+
 <body>
     <div>
-    <button onclick="operaciones();">Operaciones</button>
-    <button onclick="tablaMultiplicar();">Tabla de Multiplicaciones</button>
-    <button onclick="adivinar();">Adivinar</button>
-    <button onclick="bisiesto();">Bisiesto</button>
+        <button onclick="operaciones();">Operaciones</button>
+        <button onclick="tablaMultiplicar();">Tabla de Multiplicaciones</button>
+        <button onclick="adivinar();">Adivinar</button>
+        <button onclick="bisiesto();">Bisiesto</button>
 
-</div>
-<div>
-    <button onclick="agregarItem();">agregar</button>
-    <button onclick="quitarItem();">quitar</button>
-    <button onclick="carrito();">Carrito</button>
-</div>
-    <script src="practicaFunciones.js"></script>
+    </div>
+    <div>
+        <button onclick="agregarItem();">agregar</button>
+        <button onclick="quitarItem();">quitar</button>
+        <button onclick="carrito();">Carrito</button>
+    </div>
+    <div>
+
+        <hr />
+        <h1>Mis Prestamos</h1>
+        <input type="button" onClick="crearPrestamo();" value="Pedir Prestamo" /><br /><br />
+        <button onclick="mostrarPrestamos();">ordenar por Monto Prestado</button> <button onclick="ordenarPorId();">Ordenar por id</button><br /><br />
+        <button onclick="calcularPrestamos();">calcular Prestamos</button>
+        <table border="1" cellspacing="0">
+            <tr>
+                <td>Nombre Prestamo</td>
+                <td>Monto Prestamo</td>
+                <td>Cantidad de Cuotas</td>
+                <td>Interes %</td>
+            </tr>
+            <tbody id="prestamos"></tbody>
+        </table>
+
+    </div>
+    <script src="practicaMatriz.js"></script>
 </body>
+
 </html>

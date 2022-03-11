@@ -53,7 +53,7 @@ function tablaMultiplicar(){
 }
 
 function adivinar(){
-    let adivinar = 0;
+let adivinar = 0;
 let a =Math.round( Math.random()*9 +1);
 let puntaje = 0;
 let vidas = 3;
