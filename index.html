@@ -9,31 +9,26 @@
 </head>
 
 <body>
-    <div>
-        <button onclick="operaciones();">Operaciones</button>
-        <button onclick="tablaMultiplicar();">Tabla de Multiplicaciones</button>
-        <button onclick="adivinar();">Adivinar</button>
-        <button onclick="bisiesto();">Bisiesto</button>
-
-    </div>
-    <div>
-        <button onclick="agregarItem();">agregar</button>
-        <button onclick="quitarItem();">quitar</button>
-        <button onclick="carrito();">Carrito</button>
-    </div>
-    <div>
-
-        <hr />
+        <hr/>
         <h1>Mis Prestamos</h1>
         <input type="button" onClick="crearPrestamo();" value="Pedir Prestamo" /><br /><br />
         <button onclick="mostrarPrestamos();">ordenar por Monto Prestado</button> <button onclick="ordenarPorId();">Ordenar por id</button><br /><br />
         <button onclick="calcularPrestamos();">calcular Prestamos</button>
+        <br />
+        <br />
+        <br />
+        <hr/>
         <table border="1" cellspacing="0">
             <tr>
+                <td></td>
                 <td>Nombre Prestamo</td>
+                <td></td>
                 <td>Monto Prestamo</td>
+                <td></td>
                 <td>Cantidad de Cuotas</td>
+                <td></td>
                 <td>Interes %</td>
+                <td></td>
             </tr>
             <tbody id="prestamos"></tbody>
         </table>
