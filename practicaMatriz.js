@@ -34,11 +34,11 @@ function mostrarPrestamos() {
     prestamos.innerHTML = ''; 
     for (var i = 0; i < arrayPrestamos.length; i++) {
         arrayPrestamos.sort((a, b) => {         
-            if(a.monto < b.monto) {
+            if(a.monto > b.monto) {
                 return -1;
         }
         
-            if(a.monto > b.monto) {
+            if(a.monto < b.monto) {
                 return 1;
         }
         
