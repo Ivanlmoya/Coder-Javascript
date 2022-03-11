@@ -45,17 +45,17 @@ function mostrarPrestamos() {
                 return 0;
             });
     prestamos.innerHTML = prestamos.innerHTML +
-            '<tr>' +
+              '<tr>' +
                 '<td>' +""+'</td>' +
                 '<td>' + arrayPrestamos[i].nombre + '</td>' +
                 '<td>' +""+ '</td>' +
-                '<td>' + arrayPrestamos[i].monto + '</td>' +
+                '<td>' + "$"+arrayPrestamos[i].monto + '</td>' +
                 '<td>' +""+ '</td>' +
                 '<td>' + arrayPrestamos[i].cantCuotas + '</td>' +
                 '<td>' +""+ '</td>' +
-                '<td>' + arrayPrestamos[i].interes + '</td>' +
+                '<td>' + arrayPrestamos[i].interes+"%"+ '</td>' +
                 '<td>' +""+ '</td>' +
-            '</tr>';              
+            '</tr>';             
     }   
     
 }
@@ -77,11 +77,11 @@ function ordenarPorId() {
                 '<td>' +""+'</td>' +
                 '<td>' + arrayPrestamos[i].nombre + '</td>' +
                 '<td>' +""+ '</td>' +
-                '<td>' + arrayPrestamos[i].monto + '</td>' +
+                '<td>' + "$"+arrayPrestamos[i].monto + '</td>' +
                 '<td>' +""+ '</td>' +
                 '<td>' + arrayPrestamos[i].cantCuotas + '</td>' +
                 '<td>' +""+ '</td>' +
-                '<td>' + arrayPrestamos[i].interes + '</td>' +
+                '<td>' + arrayPrestamos[i].interes+"%"+ '</td>' +
                 '<td>' +""+ '</td>' +
             '</tr>';             
     }   
