@@ -69,15 +69,15 @@ function ordenarPorId() {
             });
     prestamos.innerHTML = prestamos.innerHTML +
             '<tr>' +
-                '<td>' + '</td>' +
+                '<td>' + ""+'</td>' +
                 '<td>' + arrayPrestamos[i].nombre + '</td>' +
-                '<td>' + '</td>' +
+                '<td>' +""+ '</td>' +
                 '<td>' + arrayPrestamos[i].monto + '</td>' +
-                '<td>' + '</td>' +
+                '<td>' +""+ '</td>' +
                 '<td>' + arrayPrestamos[i].cantCuotas + '</td>' +
-                '<td>' + '</td>' +
+                '<td>' +""+ '</td>' +
                 '<td>' + arrayPrestamos[i].interes + '</td>' +
-                '<td>' + '</td>' +
+                '<td>' +""+ '</td>' +
             '</tr>';             
     }   
 }
