@@ -6,7 +6,7 @@ nombre= "";
 let arrayPrestamos = [{nombre:nombre,monto:monto,cantCuotas:cantCuotas,interes:interes}];
 arrayPrestamos.splice(0,3)
 
-var prestamos = document.getElementById('prestamos');
+let prestamos = document.getElementById('prestamos');
 
 class Prestamo {
     constructor(nombre, monto, cantCuotas, interes) {
@@ -32,7 +32,7 @@ function crearPrestamo() {
 
 function mostrarPrestamos() {
     prestamos.innerHTML = ''; 
-    for (var i = 0; i < arrayPrestamos.length; i++) {
+    for (let i = 0; i < arrayPrestamos.length; i++) {
         arrayPrestamos.sort((a, b) => {         
             if(a.monto > b.monto) {
                 return -1;
@@ -62,7 +62,7 @@ function mostrarPrestamos() {
 
 function ordenarPorId() {
     prestamos.innerHTML = ''; 
-    for (var i = 0; i < arrayPrestamos.length; i++) {
+    for (let i = 0; i < arrayPrestamos.length; i++) {
         arrayPrestamos.sort((a, b) => {         
             if(a.nombre < b.nombre) {
                 return -1;
