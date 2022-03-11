@@ -20,10 +20,10 @@ class Prestamo {
 
 
 function crearPrestamo() {
-    let nombre = prompt("Ingresa tu nombre");
-    let monto = parseInt(prompt("agregar un nuevo Monto"));
-    let cantCuotas = parseInt(prompt("agregar cantidad de cuotas"));
-    let interes = parseInt(prompt("agregar intereses"));
+    let nombre = prompt("Ingresa tu nombre").toLocaleLowerCase();
+    let monto = parseInt(prompt("Ingrese la cantidad de pesos a pedir"));
+    let cantCuotas = parseInt(prompt("Indique en cuantas cuotas desea realizarlo"));
+    let interes = parseInt(prompt("Ingrese los intereses"));
     let prestamo = new Prestamo(nombre, monto, cantCuotas, interes);  
     arrayPrestamos.push(prestamo);
     
@@ -69,10 +69,15 @@ function ordenarPorId() {
             });
     prestamos.innerHTML = prestamos.innerHTML +
             '<tr>' +
+                '<td>' + '</td>' +
                 '<td>' + arrayPrestamos[i].nombre + '</td>' +
+                '<td>' + '</td>' +
                 '<td>' + arrayPrestamos[i].monto + '</td>' +
+                '<td>' + '</td>' +
                 '<td>' + arrayPrestamos[i].cantCuotas + '</td>' +
+                '<td>' + '</td>' +
                 '<td>' + arrayPrestamos[i].interes + '</td>' +
+                '<td>' + '</td>' +
             '</tr>';             
     }   
 }
