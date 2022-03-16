@@ -4,7 +4,7 @@ interes=0;
 nombre= "";
 
 let arrayPrestamos = [{nombre:nombre,monto:monto,cantCuotas:cantCuotas,interes:interes}];
-arrayPrestamos.splice(0,3)
+arrayPrestamos.splice(0,3);
 
 var prestamos = document.getElementById('prestamos');
 
@@ -20,12 +20,16 @@ class Prestamo {
 
 
 function crearPrestamo() {
-    let nombre = prompt("Ingresa tu nombre");
-    let monto = parseInt(prompt("agregar un nuevo Monto"));
-    let cantCuotas = parseInt(prompt("agregar cantidad de cuotas"));
-    let interes = parseInt(prompt("agregar intereses"));
+    let nombre = document.getElementById('nombre').value.toLowerCase();
+    let monto = parseInt(document.getElementById('monto').value);
+    let cantCuotas = parseInt(document.getElementById('cantCuotas').value);
+    let interes = parseInt(document.getElementById('interes').value);
     let prestamo = new Prestamo(nombre, monto, cantCuotas, interes);  
     arrayPrestamos.push(prestamo); 
+    document.getElementById('nombre').value = "";
+    document.getElementById('monto').value = "";
+    document.getElementById('cantCuotas').value = "";
+    document.getElementById('interes').value = "";
 }
 
 
@@ -33,11 +37,11 @@ function mostrarPrestamos() {
     prestamos.innerHTML = ''; 
     for (var i = 0; i < arrayPrestamos.length; i++) {
         arrayPrestamos.sort((a, b) => {         
-            if(a.monto < b.monto) {
+            if(a.monto > b.monto) {
                 return -1;
         }
         
-            if(a.monto > b.monto) {
+            if(a.monto < b.monto) {
                 return 1;
         }
         
@@ -45,10 +49,15 @@ function mostrarPrestamos() {
             });
     prestamos.innerHTML = prestamos.innerHTML +
             '<tr>' +
+            '<td>' + '</td>' +
                 '<td>' + arrayPrestamos[i].nombre + '</td>' +
-                '<td>' + arrayPrestamos[i].monto + '</td>' +
+                '<td>' + '</td>' +
+                '<td>' +'$'+ arrayPrestamos[i].monto + '</td>' +
+                '<td>' + '</td>' +
                 '<td>' + arrayPrestamos[i].cantCuotas + '</td>' +
-                '<td>' + arrayPrestamos[i].interes + '</td>' +
+                '<td>' + '</td>' +
+                '<td>' + arrayPrestamos[i].interes +'%'+ '</td>' +
+                '<td>' + '</td>' +
             '</tr>';             
     }   
     
@@ -68,15 +77,20 @@ function ordenarPorId() {
             });
     prestamos.innerHTML = prestamos.innerHTML +
             '<tr>' +
+                '<td>' + '</td>' +
                 '<td>' + arrayPrestamos[i].nombre + '</td>' +
-                '<td>' + arrayPrestamos[i].monto + '</td>' +
+                '<td>' + '</td>' +
+                '<td>' +'$'+ arrayPrestamos[i].monto + '</td>' +
+                '<td>' + '</td>' +
                 '<td>' + arrayPrestamos[i].cantCuotas + '</td>' +
-                '<td>' + arrayPrestamos[i].interes + '</td>' +
+                '<td>' + '</td>' +
+                '<td>' + arrayPrestamos[i].interes+'%' + '</td>' +
+                '<td>' + '</td>' +
             '</tr>';             
     }   
 }
 function calcularPrestamos() {
-    let personaBuscada = prompt("Ingrese el nombre de la persona");
+    let personaBuscada = document.getElementById('personaBuscada').value.toLowerCase();
     let buscador = arrayPrestamos.map(nombre => nombre.nombre);
     let index = buscador.indexOf(personaBuscada);
     let interesCuota = () => (arrayPrestamos[index].monto / arrayPrestamos[index].cantCuotas) * (arrayPrestamos[index].interes / 100 + 1);
@@ -86,6 +100,6 @@ function calcularPrestamos() {
     console.log(`el interes total es ${arrayPrestamos[index].interes}%`);
     console.log(`el valor por cuota es ${interesCuota(interes)}`);
     console.log(`el interes del monto es de $${interesTotal(interesTotal)+arrayPrestamos[index].monto} pesos.`);
-
+    document.getElementById('personaBuscada').value = "";
 }   
 

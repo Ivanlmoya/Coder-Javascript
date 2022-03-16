@@ -11,13 +11,37 @@
 <body>
         <hr/>
         <h1>Mis Prestamos</h1>
+        <div>
+        <label for="">Ingrese Nombre:</label>
+        <input type="text" id="nombre">
+        </div>
+        <br>
+        <div>
+        <label for="">Ingrese Monto Prestamo:</label>
+        <input type="number" id="monto">
+        </div>
+        <br>
+        <div>
+        <label for="">Ingrese Cantidad de cuotas:</label>
+        <input type="number" id="cantCuotas">
+        </div>
+        <br>
+        <div>
+        <label for="">Ingrese Interes Prestamo:</label>
+        <input type="number" id="interes">
+        </div>
+        <br>
+        <div>
         <input type="button" onClick="crearPrestamo();" value="Pedir Prestamo" /><br /><br />
-        <button onclick="mostrarPrestamos();">Ordenar por Cantidad Prestada</button> <button onclick="ordenarPorId();">Ordenar por Nombre</button><br /><br />
+        <div>
+        <label for="">Buscar Nombre prestamo:</label>
+        <input type="text" id="personaBuscada">
         <button onclick="calcularPrestamos();">Calcular Prestamos</button>
-        <br />
-        <br />
+        </div>
+        </div>
         <br />
         <hr/>
+        <button onclick="mostrarPrestamos();">Ordenar por Cantidad Prestada</button> <button onclick="ordenarPorId();">Ordenar por Nombre</button><br /><br />
         <table border="1" cellspacing="0">
             <tr>
                 <td></td>
