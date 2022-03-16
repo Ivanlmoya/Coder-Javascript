@@ -25,8 +25,7 @@ function crearPrestamo() {
     let cantCuotas = parseInt(prompt("agregar cantidad de cuotas"));
     let interes = parseInt(prompt("agregar intereses"));
     let prestamo = new Prestamo(nombre, monto, cantCuotas, interes);  
-    arrayPrestamos.push(prestamo);
-    
+    arrayPrestamos.push(prestamo); 
 }
 
 
@@ -78,8 +77,8 @@ function ordenarPorId() {
 }
 function calcularPrestamos() {
     let personaBuscada = prompt("Ingrese el nombre de la persona");
-    let buscador = arrayPrestamos.map(nombre => nombre.nombre)
-    let index = buscador.indexOf(personaBuscada) 
+    let buscador = arrayPrestamos.map(nombre => nombre.nombre);
+    let index = buscador.indexOf(personaBuscada);
     let interesCuota = () => (arrayPrestamos[index].monto / arrayPrestamos[index].cantCuotas) * (arrayPrestamos[index].interes / 100 + 1);
     let interesTotal = () => (arrayPrestamos[index].monto * (arrayPrestamos[index].interes / 100 + 1)) - arrayPrestamos[index].monto;
 
