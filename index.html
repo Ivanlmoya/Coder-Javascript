@@ -32,16 +32,16 @@
         </div>
         <br>
         <div>
-        <input type="button" onClick="crearPrestamo();" value="Pedir Prestamo" /><br /><br />
+        <input type="button" id="crearPrestamo" value="Pedir Prestamo" /><br /><br />
         <div>
         <label for="">Buscar Nombre prestamo:</label>
         <input type="text" id="personaBuscada">
-        <button onclick="calcularPrestamos();">Calcular Prestamos</button>
+        <button id="calcularPrestamos">Calcular Prestamos</button>
         </div>
         </div>
         <br />
         <hr/>
-        <button onclick="ordenarPorId();">Ordenar por Nombre</button> <button onclick="mostrarPrestamos();">Ordenar por Cantidad Prestada</button> <br /><br />
+        <button id="ordenarPorId">Ordenar por Nombre</button> <button id="mostrarPrestamos">Ordenar por Cantidad Prestada</button> <br /><br />
         <table border="1" cellspacing="0">
             <tr>
                 <td></td>
@@ -65,3 +65,4 @@
 </body>
 
 </html>
+
