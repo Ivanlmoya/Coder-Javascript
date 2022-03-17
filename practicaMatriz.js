@@ -1,13 +1,12 @@
-/* Se declara y limpia el array */
 monto=0;
 cantCuotas=0;
 interes=0;
 nombre= "";
-
+/* Se declara y limpia el array */
 const arrayPrestamos = [{nombre:nombre,monto:monto,cantCuotas:cantCuotas,interes:interes}];
 arrayPrestamos.splice(0,3);
 
-/*  Se declaran las variables que interactuan con el DOM*/
+/*  Se declaran las variables que interactuan con el dom*/
 const prestamos = document.getElementById('prestamos');
 const resultados = document.getElementById('resultados');
 const botonCrearPrestamo = document.getElementById('crearPrestamo');
