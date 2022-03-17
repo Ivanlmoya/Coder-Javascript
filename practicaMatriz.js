@@ -1,3 +1,4 @@
+/* Se declara y limpia el array */
 monto=0;
 cantCuotas=0;
 interes=0;
@@ -6,9 +7,31 @@ nombre= "";
 const arrayPrestamos = [{nombre:nombre,monto:monto,cantCuotas:cantCuotas,interes:interes}];
 arrayPrestamos.splice(0,3);
 
-/*  */
+/*  Se declaran las variables que interactuan con el DOM*/
 const prestamos = document.getElementById('prestamos');
 const resultados = document.getElementById('resultados');
+const botonCrearPrestamo = document.getElementById('crearPrestamo');
+const botonCalcularPrestamos = document.getElementById('calcularPrestamos');
+const botonOrdenarPorId = document.getElementById('ordenarPorId');
+const botonMostrarPrestamos = document.getElementById('mostrarPrestamos');
+
+
+/* Se crean los escuchadores de evento para llamar las funciones  */
+botonCrearPrestamo.onclick = () => {
+    crearPrestamo()
+};
+
+botonCalcularPrestamos.onclick = () => {
+    calcularPrestamos()
+};
+
+botonOrdenarPorId.onclick = () => {
+    ordenarPorId()
+};
+
+botonMostrarPrestamos.onclick = () => {
+    mostrarPrestamos()
+};
 
 /* Se crea el constructor de los prestamos */
 class Prestamo {
@@ -115,8 +138,8 @@ function calcularPrestamos() {
     let buscador = arrayPrestamos.map(nombre => nombre.nombre);
     let index = buscador.indexOf(personaBuscada);
     /* Se realizan los calculos con el index encontrado */
-    let interesCuota = () => (arrayPrestamos[index].monto / arrayPrestamos[index].cantCuotas) * (arrayPrestamos[index].interes / 100 + 1);
-    let interesTotal = () => (arrayPrestamos[index].monto * (arrayPrestamos[index].interes / 100 + 1)) - arrayPrestamos[index].monto;
+    let interesCuota = () => parseInt((arrayPrestamos[index].monto / arrayPrestamos[index].cantCuotas) * (arrayPrestamos[index].interes / 100 + 1));
+    let interesTotal = () => parseInt((arrayPrestamos[index].monto * (arrayPrestamos[index].interes / 100 + 1)) - arrayPrestamos[index].monto);
     /* Se limpia e imprime en html la informacion */
     resultados.innerHTML = ''; 
     resultados.innerHTML =`   <hr/>el interes total de ${arrayPrestamos[index].nombre} es de ${arrayPrestamos[index].interes}%<br><br>el valor por cuota es de $${interesCuota(interes)} pesos.<br><br>el monto final a devolver es de $${interesTotal(interesTotal)+arrayPrestamos[index].monto} pesos.   <hr/>`;
