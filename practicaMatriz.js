@@ -119,7 +119,7 @@ function calcularPrestamos() {
     let interesTotal = () => (arrayPrestamos[index].monto * (arrayPrestamos[index].interes / 100 + 1)) - arrayPrestamos[index].monto;
     /* Se limpia e imprime en html la informacion */
     resultados.innerHTML = ''; 
-    resultados.innerHTML =`   <hr/>el interes total de ${arrayPrestamos[index].nombre} es de ${arrayPrestamos[index].interes}%<br><br>el valor por cuota es de $${interesCuota(interes)}<br><br>el monto final a devolver es de $${interesTotal(interesTotal)+arrayPrestamos[index].monto} pesos.   <hr/>`;
+    resultados.innerHTML =`   <hr/>el interes total de ${arrayPrestamos[index].nombre} es de ${arrayPrestamos[index].interes}%<br><br>el valor por cuota es de $${interesCuota(interes)} pesos.<br><br>el monto final a devolver es de $${interesTotal(interesTotal)+arrayPrestamos[index].monto} pesos.   <hr/>`;
     document.getElementById('personaBuscada').value = "";
 }   
 
