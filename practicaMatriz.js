@@ -2,13 +2,47 @@ monto=0;
 cantCuotas=0;
 interes=0;
 nombre= "";
-
+/* Se declara y limpia el array */
 const arrayPrestamos = [{nombre:nombre,monto:monto,cantCuotas:cantCuotas,interes:interes}];
 arrayPrestamos.splice(0,3);
 
-/*  */
+/*  Se declaran las variables que interactuan con el dom*/
 const prestamos = document.getElementById('prestamos');
 const resultados = document.getElementById('resultados');
+const botonCrearPrestamo = document.getElementById('crearPrestamo');
+const botonCalcularPrestamos = document.getElementById('calcularPrestamos');
+const botonOrdenarPorId = document.getElementById('ordenarPorId');
+const botonMostrarPrestamos = document.getElementById('mostrarPrestamos');
+const botonOrdenarPorCuotas = document.getElementById('ordenarPorCuotas');
+const botonOrdenarPorInteres = document.getElementById('ordenarPorInteres');
+
+
+/* Se crean los escuchadores de evento para llamar las funciones  */
+botonCrearPrestamo.onclick = () => {
+    crearPrestamo()
+};
+
+botonCalcularPrestamos.onclick = () => {
+    calcularPrestamos()
+};
+
+botonOrdenarPorId.onclick = () => {
+    ordenarPorId()
+};
+
+botonMostrarPrestamos.onclick = () => {
+    mostrarPrestamos()
+};
+
+botonOrdenarPorCuotas.onclick = () => {
+    ordenarPorCuotas()
+};
+
+botonOrdenarPorInteres.onclick = () => {
+    ordenarPorInteres()
+};
+
+
 
 /* Se crea el constructor de los prestamos */
 class Prestamo {
@@ -108,6 +142,62 @@ function ordenarPorId() {
     }   
 }
 
+/* Funcion para ordenenar por Cantidad de Cuotas */
+function ordenarPorCuotas() {
+    prestamos.innerHTML = ''; 
+    for (var i = 0; i < arrayPrestamos.length; i++) {
+        arrayPrestamos.sort((a, b) => {         
+            if(a.cantCuotas > b.cantCuotas) {
+                return -1;
+        }
+            if(a.cantCuotas < b.cantCuotas) {
+                return 1;
+        }
+                return 0;
+            });
+    prestamos.innerHTML = prestamos.innerHTML +
+            '<tr>' +
+                '<td>' + '</td>' +
+                '<td>' + arrayPrestamos[i].nombre + '</td>' +
+                '<td>' + '</td>' +
+                '<td>' +'$'+ arrayPrestamos[i].monto + '</td>' +
+                '<td>' + '</td>' +
+                '<td>' + arrayPrestamos[i].cantCuotas + '</td>' +
+                '<td>' + '</td>' +
+                '<td>' + arrayPrestamos[i].interes+'%' + '</td>' +
+                '<td>' + '</td>' +
+            '</tr>';             
+    }   
+}
+
+/* Funcion para ordenenar por Interes */
+function ordenarPorInteres() {
+    prestamos.innerHTML = ''; 
+    for (var i = 0; i < arrayPrestamos.length; i++) {
+        arrayPrestamos.sort((a, b) => {         
+            if(a.interes > b.interes) {
+                return -1;
+        }
+            if(a.interes < b.interes) {
+                return 1;
+        }
+                return 0;
+            });
+    prestamos.innerHTML = prestamos.innerHTML +
+            '<tr>' +
+                '<td>' + '</td>' +
+                '<td>' + arrayPrestamos[i].nombre + '</td>' +
+                '<td>' + '</td>' +
+                '<td>' +'$'+ arrayPrestamos[i].monto + '</td>' +
+                '<td>' + '</td>' +
+                '<td>' + arrayPrestamos[i].cantCuotas + '</td>' +
+                '<td>' + '</td>' +
+                '<td>' + arrayPrestamos[i].interes+'%' + '</td>' +
+                '<td>' + '</td>' +
+            '</tr>';             
+    }   
+}
+
 /* Funcion que busca los datos de la persona */
 function calcularPrestamos() {
     /* Se recorre el array para conseguir el index del nombre ingresado */
@@ -115,11 +205,30 @@ function calcularPrestamos() {
     let buscador = arrayPrestamos.map(nombre => nombre.nombre);
     let index = buscador.indexOf(personaBuscada);
     /* Se realizan los calculos con el index encontrado */
-    let interesCuota = () => (arrayPrestamos[index].monto / arrayPrestamos[index].cantCuotas) * (arrayPrestamos[index].interes / 100 + 1);
-    let interesTotal = () => (arrayPrestamos[index].monto * (arrayPrestamos[index].interes / 100 + 1)) - arrayPrestamos[index].monto;
+    let interesCuota = () => parseInt((arrayPrestamos[index].monto / arrayPrestamos[index].cantCuotas) * (arrayPrestamos[index].interes / 100 + 1));
+    let interesTotal = () => parseInt((arrayPrestamos[index].monto * (arrayPrestamos[index].interes / 100 + 1)) - arrayPrestamos[index].monto);
     /* Se limpia e imprime en html la informacion */
     resultados.innerHTML = ''; 
-    resultados.innerHTML =`   <hr/>el interes total de ${arrayPrestamos[index].nombre} es de ${arrayPrestamos[index].interes}%<br><br>el valor por cuota es de $${interesCuota(interes)} pesos.<br><br>el monto final a devolver es de $${interesTotal(interesTotal)+arrayPrestamos[index].monto} pesos.   <hr/>`;
+    resultados.innerHTML =` 
+    <hr/>
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-md-center">
+                <div class="col-4 text-center">
+                    <p> El interes del prestamo de ${arrayPrestamos[index].nombre} es de $${interesTotal(interesTotal)} pesos</p>
+                </div>
+            </div>
+            <div class="row d-flex align-items-center justify-content-md-center">
+                <div class="col-4 text-center">
+                    <p>El valor por cuota es de $${interesCuota(interes)} pesos.</p>
+                </div>
+            </div>
+            <div class="row d-flex align-items-center justify-content-md-center">
+                <div class="col-4 text-center">
+                    <p>El monto final a devolver es de $${interesTotal(interesTotal)+arrayPrestamos[index].monto} pesos.</p>
+                </div>
+            </div>   
+        </div>
+    <hr/>`;
     document.getElementById('personaBuscada').value = "";
 }   
 
