@@ -81,17 +81,17 @@ function crearPrestamo() {
     prestamos.innerHTML = ''; 
     for (var i = 0; i < arrayPrestamos.length; i++) {
     prestamos.innerHTML = prestamos.innerHTML +
-    '<tr>' +
+    `<tr id="${arrayPrestamos[i].id}">` +
     '<td>' + '</td>' +
-        '<td>' + arrayPrestamos[i].id + '</td>' +
-        '<td>' + '</td>' +
-        '<td>' + arrayPrestamos[i].nombre + '</td>' +
-        '<td>' + '</td>' +
-        '<td>' +'$'+ arrayPrestamos[i].monto + '</td>' +
-        '<td>' + '</td>' +
-        '<td>' + arrayPrestamos[i].cantCuotas + '</td>' +
-        '<td>' + '</td>' +
-        '<td>' + arrayPrestamos[i].interes +'%'+ '</td>' +
+    '<td class="text-center">' + arrayPrestamos[i].id + '</td>' +
+    '<td>' + '</td>' +
+    '<td class="text-center">' + arrayPrestamos[i].nombre + '</td>' +
+    '<td>' + '</td>' +
+    '<td class="text-center">' +'$'+ arrayPrestamos[i].monto + '</td>' +
+    '<td>' + '</td>' +
+    '<td class="text-center">' + arrayPrestamos[i].cantCuotas + '</td>' +
+    '<td>' + '</td>' +
+    '<td class="text-center">' + arrayPrestamos[i].interes +'%'+ '</td>' +
         '<td>' + '</td>' +
         '<td>' + '<button id="botonEliminar"  class="form-control btn-secondary" onclick="eliminarRegistro()"> Eliminar </button>' + '</td>' +
         '<td>' + '</td>' +
@@ -107,11 +107,11 @@ localStorage.setItem('ultimoId',JSON.stringify(nuevoId));
 
 
 document.addEventListener('DOMContentLoaded', function(event){
-    const arrayDomStorage = JSON.parse(localStorage.getItem('arrayDataPrestamos')) ||[];
+    let arrayDomStorage = JSON.parse(localStorage.getItem('arrayDataPrestamos')) ||[];
     prestamos.innerHTML = ''; 
     for (var i = 0; i < arrayDomStorage.length; i++) {
     prestamos.innerHTML = prestamos.innerHTML +
-    '<tr>' +
+    `<tr id="${arrayDomStorage[i].id}">` +
     '<td>' + '</td>' +
         '<td class="text-center">' + arrayDomStorage[i].id + '</td>' +
         '<td>' + '</td>' +
@@ -133,8 +133,16 @@ function eliminarRegistro(){
     let eliminar = document.getElementById('botonEliminar');
     eliminar.addEventListener("click", (event) =>{
     event.target.parentNode.parentNode.remove();
+    eliminarStorage()
     });
+}
 
+function eliminarStorage(){
+    let arrayDomStorage = JSON.parse(localStorage.getItem('arrayDataPrestamos'))
+    let arrayDomStorageIndex = arrayDomStorage.findIndex(element => element.id === id)
+    arrayDomStorage.splice(arrayDomStorageIndex,1)
+    let arrayPrestamosStorageJson = JSON.stringify(arrayDomStorage);
+    localStorage.setItem("arrayDataPrestamos", arrayPrestamosStorageJson);
 }
 
 
@@ -157,15 +165,15 @@ function mostrarPrestamos() {
     prestamos.innerHTML = prestamos.innerHTML +
             '<tr>' +
                 '<td>' + '</td>' +
-                '<td class="text-center">' + arrayDomStorage[i].id + '</td>' +
+                '<td class="text-center">' + arrayPrestamos[i].id + '</td>' +
                 '<td>' + '</td>' +
-                '<td class="text-center">' + arrayDomStorage[i].nombre + '</td>' +
+                '<td class="text-center">' + arrayPrestamos[i].nombre + '</td>' +
                 '<td>' + '</td>' +
-                '<td class="text-center">' +'$'+ arrayDomStorage[i].monto + '</td>' +
+                '<td class="text-center">' +'$'+ arrayPrestamos[i].monto + '</td>' +
                 '<td>' + '</td>' +
-                '<td class="text-center">' + arrayDomStorage[i].cantCuotas + '</td>' +
+                '<td class="text-center">' + arrayPrestamos[i].cantCuotas + '</td>' +
                 '<td>' + '</td>' +
-                '<td class="text-center">' + arrayDomStorage[i].interes +'%'+ '</td>' +
+                '<td class="text-center">' + arrayPrestamos[i].interes +'%'+ '</td>' +
                 '<td>' + '</td>' +
             '</tr>';             
     }   
@@ -187,15 +195,15 @@ function ordenarPorId() {
     prestamos.innerHTML = prestamos.innerHTML +
             '<tr>' +
                 '<td>' + '</td>' +
-                '<td class="text-center">' + arrayDomStorage[i].id + '</td>' +
+                '<td class="text-center">' + arrayPrestamos[i].id + '</td>' +
                 '<td>' + '</td>' +
-                '<td class="text-center">' + arrayDomStorage[i].nombre + '</td>' +
+                '<td class="text-center">' + arrayPrestamos[i].nombre + '</td>' +
                 '<td>' + '</td>' +
-                '<td class="text-center">' +'$'+ arrayDomStorage[i].monto + '</td>' +
+                '<td class="text-center">' +'$'+ arrayPrestamos[i].monto + '</td>' +
                 '<td>' + '</td>' +
-                '<td class="text-center">' + arrayDomStorage[i].cantCuotas + '</td>' +
+                '<td class="text-center">' + arrayPrestamos[i].cantCuotas + '</td>' +
                 '<td>' + '</td>' +
-                '<td class="text-center">' + arrayDomStorage[i].interes +'%'+ '</td>' +
+                '<td class="text-center">' + arrayPrestamos[i].interes +'%'+ '</td>' +
                 '<td>' + '</td>' +
             '</tr>';             
     }   
@@ -217,15 +225,15 @@ function ordenarPorCuotas() {
     prestamos.innerHTML = prestamos.innerHTML +
             '<tr>' +
                 '<td>' + '</td>' +
-                '<td class="text-center">' + arrayDomStorage[i].id + '</td>' +
+                '<td class="text-center">' + arrayPrestamos[i].id + '</td>' +
                 '<td>' + '</td>' +
-                '<td class="text-center">' + arrayDomStorage[i].nombre + '</td>' +
+                '<td class="text-center">' + arrayPrestamos[i].nombre + '</td>' +
                 '<td>' + '</td>' +
-                '<td class="text-center">' +'$'+ arrayDomStorage[i].monto + '</td>' +
+                '<td class="text-center">' +'$'+ arrayPrestamos[i].monto + '</td>' +
                 '<td>' + '</td>' +
-                '<td class="text-center">' + arrayDomStorage[i].cantCuotas + '</td>' +
+                '<td class="text-center">' + arrayPrestamos[i].cantCuotas + '</td>' +
                 '<td>' + '</td>' +
-                '<td class="text-center">' + arrayDomStorage[i].interes +'%'+ '</td>' +
+                '<td class="text-center">' + arrayPrestamos[i].interes +'%'+ '</td>' +
                 '<td>' + '</td>' +
             '</tr>';             
     }   
@@ -247,15 +255,15 @@ function ordenarPorInteres() {
     prestamos.innerHTML = prestamos.innerHTML +
             '<tr>' +
                 '<td>' + '</td>' +
-                '<td class="text-center">' + arrayDomStorage[i].id + '</td>' +
+                '<td class="text-center">' + arrayPrestamos[i].id + '</td>' +
                 '<td>' + '</td>' +
-                '<td class="text-center">' + arrayDomStorage[i].nombre + '</td>' +
+                '<td class="text-center">' + arrayPrestamos[i].nombre + '</td>' +
                 '<td>' + '</td>' +
-                '<td class="text-center">' +'$'+ arrayDomStorage[i].monto + '</td>' +
+                '<td class="text-center">' +'$'+ arrayPrestamos[i].monto + '</td>' +
                 '<td>' + '</td>' +
-                '<td class="text-center">' + arrayDomStorage[i].cantCuotas + '</td>' +
+                '<td class="text-center">' + arrayPrestamos[i].cantCuotas + '</td>' +
                 '<td>' + '</td>' +
-                '<td class="text-center">' + arrayDomStorage[i].interes +'%'+ '</td>' +
+                '<td class="text-center">' + arrayPrestamos[i].interes +'%'+ '</td>' +
                 '<td>' + '</td>' +
             '</tr>';             
     }   
